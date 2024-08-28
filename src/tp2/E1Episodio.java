@@ -31,7 +31,7 @@ public class E1Episodio {
     }
 
     public void calificarEpisodio(int calificacion) {
-        if(calificacion > 1 && calificacion < 5) {
+        if (calificacion >= 1 && calificacion <= 5) {
             this.calificacion = calificacion;
         } else {
             System.out.println("valor incorrecto, ingrese valores del 1 al 5");
