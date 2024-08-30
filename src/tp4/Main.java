@@ -4,7 +4,7 @@ public class Main {
         //EJERCICIO 1
         /*E1JAlarmaLuminosa alarma = new E1JAlarmaLuminosa();
 
-        alarma.setVidrioRoto(false);
+        alarma.setVidrioRoto(true);
         System.out.println(alarma.comprobar());  // Debería hacer sonar el timbre y encender la luz*/
 
         //EJERCICIO 2
