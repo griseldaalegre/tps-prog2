@@ -2,6 +2,7 @@ package tp4;
 public class Main {
     public static void main(String[] args) {
         //EJERCICIO 1
+
         /*1 - Alarma
         Implementar en Java todo el código necesario para el funcionamiento de una alarma. La
         alarma tiene tres variables que indican si: se rompió un vidrio, se abrió una puerta o ventana,
@@ -18,6 +19,7 @@ public class Main {
         System.out.println(alarma.comprobar());  // Debería hacer sonar el timbre y encender la luz*/
 
         //EJERCICIO 2
+
         /*2- Alarma Sensorial
         Modificar el ejercicio anterior de manera tal que las variables que utiliza la alarma se
         cambien por sensores que poseen un comportamiento y pueden sondear diferentes partes de
