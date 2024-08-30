@@ -2,6 +2,6 @@ package tp4;
 
 public class EJ1Luz {
     public String encender() {
-        return "Luz encendida";
+        return "Se encendio luz";
     }
 }

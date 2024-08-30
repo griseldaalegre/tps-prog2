@@ -1,24 +1,16 @@
 package tp4;
 
+import java.util.ArrayList;
+
 public class EJ1Alarma {
-    /*1 - Alarma
-Implementar en Java todo el código necesario para el funcionamiento de una alarma. La
-alarma tiene tres variables que indican si: se rompió un vidrio, se abrió una puerta o ventana,
-se detectó un movimiento dentro del domicilio. Cuando se invoca al método comprobar() de
-la alarma, la misma chequea si alguna de sus variables indica que debe hacer sonar la señal
-sonora.
-Crea una clase denominada AlarmaLuminosa que, además de activar la señal sonora,
-encienda una luz cuando alguno de los indicadores está activado.
-Nota: Asumir que hay una clase Timbre, con un método hacerSonar() y una clase Luz con el
-método encender().*/
-
-
-    private boolean vidrioRoto;
-    private boolean puertaVentanaAbierta;
-    private boolean movimientoDetectado;
     private E1Timbre timbre;
+    private ArrayList<EJ2Sensor> sensores;
 
-    public EJ1Alarma() {
+    //EJERCICIO 1
+    // private boolean vidrioRoto;
+    // private boolean puertaVentanaAbierta;
+    //private boolean movimientoDetectado
+   /* public EJ1Alarma() {
         this.vidrioRoto = false;
         this.puertaVentanaAbierta = false;
         this.movimientoDetectado = false;
@@ -37,11 +29,36 @@ método encender().*/
         this.movimientoDetectado = estado;
     }
 
-    public void comprobar() {
+    public boolean comprobar() {
         if (vidrioRoto || puertaVentanaAbierta || movimientoDetectado) {
             timbre.hacerSonar();
+            return true;
         }
+        return false;
+    }*/
+
+    public EJ1Alarma() {
+        this.sensores = new ArrayList<EJ2Sensor>();
+        this.timbre = new E1Timbre();
     }
 
+    public void addSensor(EJ2Sensor sensor) {
+        this.sensores.add(sensor);
+    }
 
+    public ArrayList<EJ2Sensor> getSensores() {
+        return sensores;
+    }
+
+    public String comprobar() {
+        String zonasEnConflicto = ""; // Acumulador de zonas en conflicto
+
+        for (int i = 0; i < this.sensores.size(); i++) {
+            if (this.sensores.get(i).isZonaActivada()) {
+                zonasEnConflicto += this.timbre.hacerSonar(this.sensores.get(i))  + "\n";
+            }
+        }
+
+        return zonasEnConflicto; // Retorna las zonas en conflicto como un String
+    }
 }
