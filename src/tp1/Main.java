@@ -13,10 +13,13 @@ public class Main {
         System.out.println(persona1.cumpleAnosHoy());
 
         //E2
-        E2Electrodomestico electro = new E2Electrodomestico("Heladera");
+       /* E2Electrodomestico electro = new E2Electrodomestico("Heladera");
         System.out.println(electro);
         System.out.println(electro.calcularBalance());
         System.out.println(electro.esBajoConsumo());
         System.out.println(electro.esAltaGama());
+
+    */
     }
+
 }

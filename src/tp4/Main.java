@@ -1,4 +1,5 @@
 package tp4;
+
 public class Main {
     public static void main(String[] args) {
         //EJERCICIO 1
@@ -26,7 +27,7 @@ public class Main {
         la casa. Cada sensor posee el nombre de la zona que controla. Permitir que se incorporen
         nuevos sensores. Modificar la alarma para que además de hacer sonar el timbre, imprima por
         pantalla el nombre de la zona en conflicto (pueden ser más de una).*/
-
+/*
         EJ2Sensor sensorPlantaAlta = new EJ2Sensor("Planta Alta", true);
         EJ2Sensor sensorPlantaBaja = new EJ2Sensor("Planta baja", true);
 
@@ -34,7 +35,33 @@ public class Main {
         alarma.addSensor(sensorPlantaAlta);
         alarma.addSensor(sensorPlantaBaja);
 
-        System.out.println(alarma.comprobar());
+        System.out.println(alarma.comprobar());*/
+
+        //EJERCICIO 3
+        /*
+        EJ3CalculadorPorHorasExtras calculadorXHora = new EJ3CalculadorPorHorasExtras(300.000, 15.000, 10);
+        System.out.println(calculadorXHora.calcularSueldo());
+    */
+        //EJERCICIO 4
+        //EJERCICIO 5
+        //EJERCICIO 6
+
+        EJ6RegistroPersonas registro = new EJ6RegistroPersonas();
+
+        EJ6Empleado empleado1 = new EJ6Empleado("Juan", "Díaz", 29, "22", 500.000, "QA");
+        EJ6Empleado empleado2 = new EJ6Empleado("Luis", "Ruiz", 34, "75", 400.000, "UX");
+
+        EJ6Jerarquico jerarquico1 = new EJ6Jerarquico("Mabel", "Gomez", 44, "22", 600.000, "SEO");
+        EJ6Jerarquico jerarquico2 = new EJ6Jerarquico("Lucas", "Gonzales", 55, "22", 500.000, "PO");
+
+        EJ6UsuarioFinal usuario1 = new EJ6UsuarioFinal("Marta", "Ruiz", 29, "martaruiz", "martita");
+        registro.addPersona(empleado1);
+        registro.addPersona(empleado2);
+        registro.addPersona(jerarquico1);
+        registro.addPersona(jerarquico2);
+        registro.addPersona(usuario1);
+
+        System.out.println(registro.exportarListado());
 
 
     }

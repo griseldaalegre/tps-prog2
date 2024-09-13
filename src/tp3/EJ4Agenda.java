@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class EJ4Agenda {
     private ArrayList<EJ4Contacto> listaContactos;
 
-    public EJ4Agenda(ArrayList<EJ4Contacto> listaContactos) {
+    public EJ4Agenda() {
         this.listaContactos = new ArrayList<EJ4Contacto>();
     }
 

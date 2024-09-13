@@ -15,6 +15,7 @@ public class E1Persona {
 
     //Constructor con datos por default
     public E1Persona(int dni) {
+        super();
         this.nombre = "N";
         this.apellido = "N";
         this.fechaNacimiento = LocalDate.of(2000, 1, 1);
@@ -44,6 +45,7 @@ public class E1Persona {
 
     public String getApellido() {
         return apellido;
+
     }
 
     public void setApellido(String apellido) {
