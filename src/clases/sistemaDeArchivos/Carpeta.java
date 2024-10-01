@@ -1,5 +1,7 @@
 package clases.sistemaDeArchivos;
 
+import clases.sistemaDeArchivos.condiciones.Condicion;
+
 import java.util.ArrayList;
 
 public class Carpeta extends ElementoSA {
@@ -12,6 +14,7 @@ public class Carpeta extends ElementoSA {
 
     public void addContenido(ElementoSA c) {
         contenido.add(c);
+        this.setFechaUltimaModificacion();
     }
 
     public double getTamanio() {
@@ -36,4 +39,15 @@ public class Carpeta extends ElementoSA {
                 "contenido=" + contenido +
                 '}';
     }
+
+    public ArrayList<Archivo> buscar(Condicion c) {
+        ArrayList<Archivo> resultado = new ArrayList<Archivo>();
+        for (ElementoSA elem : contenido) {
+            resultado.addAll(elem.buscar(c));//el hijo busca
+            //el add agrega de a un elemento
+            //addAll agrega cada uno de los eleementos dde la lista que recibe como a la lista resultado
+        }
+        return resultado;
+    }
+
 }

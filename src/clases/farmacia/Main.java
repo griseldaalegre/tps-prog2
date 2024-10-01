@@ -1,4 +1,4 @@
-package clases.centroComputo.farmacia;
+package clases.farmacia;
 
 public class Main {
     public static void main(String[] Args) {

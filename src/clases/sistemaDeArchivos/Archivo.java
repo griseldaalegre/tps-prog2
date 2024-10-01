@@ -1,6 +1,9 @@
 package clases.sistemaDeArchivos;
 
+import clases.sistemaDeArchivos.condiciones.Condicion;
+
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Archivo extends ElementoSA {
     private String extension;
@@ -25,6 +28,7 @@ public class Archivo extends ElementoSA {
         return 1;
     }
 
+
     public void setTamanio(double tamanio) {
         this.tamanio = tamanio;
         this.setFechaUltimaModificacion();
@@ -33,9 +37,18 @@ public class Archivo extends ElementoSA {
 
     @Override
     public String toString() {
-        return "Archivo{" +
-                "extension='" + extension + '\'' +
+        return "Archivo{" +"Nombre= "+ getNombre() +
+                " extension='" + extension + '\'' +
                 ", tamanio=" + tamanio +
                 '}';
     }
+
+    @Override
+    public ArrayList<Archivo> buscar(Condicion condicion) {
+        ArrayList<Archivo> resultado = new ArrayList<>();
+        if (condicion.cumple(this))//me paso yo
+            resultado.add(this);
+        return resultado;
+    }
+
 }

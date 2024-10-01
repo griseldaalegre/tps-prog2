@@ -1,4 +1,4 @@
-package procesadoresCompletoDinamico;
+package clases.procesadoresCompletoDinamico;
 
 public class ComparadorPorCPU extends ComparadorDeTareas {
 

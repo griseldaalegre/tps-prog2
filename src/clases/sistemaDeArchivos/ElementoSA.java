@@ -1,6 +1,9 @@
 package clases.sistemaDeArchivos;
 
+import clases.sistemaDeArchivos.condiciones.Condicion;
+
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public abstract class ElementoSA {
     private String nombre;
@@ -37,4 +40,18 @@ public abstract class ElementoSA {
     public abstract double getTamanio();
 
     public abstract int getCantidadElementos();
+
+    protected abstract ArrayList<Archivo> buscar(Condicion c);
+
+    @Override
+    public boolean equals(Object o) {
+        try {
+            ElementoSA that = (ElementoSA) o;
+            return nombre.equals(that.getNombre());
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+
 }
