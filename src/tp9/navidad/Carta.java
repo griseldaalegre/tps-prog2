@@ -4,18 +4,26 @@ import java.util.ArrayList;
 
 public class Carta {
     private String remitente;
-    protected ArrayList<String> listaDeRehalos;
+    protected String listaDeRegalos;
 
-    public Carta(String remitente) {
+    public Carta(String remitente, String listaDeRegalos) {
         this.remitente = remitente;
-        this.listaDeRehalos = new ArrayList<String>();
+        this.listaDeRegalos = listaDeRegalos;
     }
 
     public String getRemitente() {
         return remitente;
     }
 
-    public void setListaDeRehalos(String regalo) {
-        this.listaDeRehalos.add(regalo);
+    public void setRegalo(String nuevoRegalo) {
+        this.listaDeRegalos = nuevoRegalo;
+    }
+
+    @Override
+    public String toString() {
+        return "Carta{" +
+                "remitente='" + remitente + '\'' +
+                ", listaDeRehalos='" + listaDeRegalos + '\'' +
+                '}';
     }
 }
