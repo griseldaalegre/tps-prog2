@@ -11,4 +11,5 @@ public interface ElementoEmpresa {
     public double gastoSueldo();
 
     public ArrayList<Empleado> empleadosCon(String especialidad);
+
 }

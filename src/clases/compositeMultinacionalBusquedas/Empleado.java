@@ -1,9 +1,11 @@
-package clases.compositeMultinacional;
+package clases.compositeMultinacionalBusquedas;
+
+import clases.compositeMultinacionalBusquedas.condiciones.Condicion;
 
 import java.util.ArrayList;
 
 //Compisite: Cuando hay objetos compuestos y simples;
-public class Empleado implements ElementoEmpresa{
+public class Empleado extends ElementoEmpresa {
     //Objeto empleado representa al simple;
     private String nombre;
     private String apellido;
@@ -44,12 +46,26 @@ public class Empleado implements ElementoEmpresa{
     }
 
     @Override
-    public ArrayList<Empleado> empleadosCon(String especialidad) {
+    public ArrayList<Empleado> empleadosCon(Condicion c) {
         ArrayList resultado = new ArrayList<>();
-        if (this.getEspecialidad().equals(especialidad)) {
+        if (c.cumple(this)) { //EN LA ESTRUCTURA SIMPLE SI SE PUEDE HACER UN IF
             resultado.add(this);
         }
         return resultado;
+    }
+
+    @Override
+    public ElementoEmpresa copia() { //devuelvo una copia de este objeto
+        return new Empleado(this.getNombre(), this.getApellido(), this.getEspecialidad(), this.gastoSueldo());
+    }
+
+    @Override//compuestos sin hijos
+    public ElementoEmpresa copiaRestringida(Condicion c) {
+        if (c.cumple(this)) {//si este empleado cumplecon la condicion lo copio
+            return new Empleado(this.getNombre(), this.getApellido(), this.getEspecialidad(), this.gastoSueldo());
+        }
+        return null; //SI NO CUMPLO
+
     }
 
     @Override
@@ -62,6 +78,7 @@ public class Empleado implements ElementoEmpresa{
             return false;
         }
     }
+
 
     @Override
     public int cantidadEmpleados() {
