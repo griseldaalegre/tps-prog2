@@ -21,11 +21,6 @@ public abstract class ElementoEmpresa {
 
     public abstract ElementoEmpresa copiaRestringida(Condicion c);
 
-    public ArrayList<Empleado> empleadosCon(Condicion condicion, Comparator<Empleado> c) {
-        ArrayList temp = this.empleadosCon(condicion);
-        Collections.sort(temp, c);//ordena segun cualquier criterio
-        return temp;
-    }
 
     //devuelve la lista de empleados ordenadas
 
