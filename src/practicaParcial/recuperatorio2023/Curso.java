@@ -1,6 +1,6 @@
-package recuperatorio2023;
+package practicaParcial.recuperatorio2023;
 
-import recuperatorio2023.condiciones.Condicion;
+import practicaParcial.recuperatorio2023.condiciones.Condicion;
 
 import java.util.ArrayList;
 

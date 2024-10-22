@@ -1,6 +1,6 @@
-package recuperatorio2023.condiciones;
+package practicaParcial.recuperatorio2023.condiciones;
 
-import recuperatorio2023.ComponenteAcademia;
+import practicaParcial.recuperatorio2023.ComponenteAcademia;
 
 public class CondicionPrecioMenor extends Condicion {
     private double precioMaximo;
