@@ -1,5 +1,6 @@
 package practicaParcial.collectors;
 
+
 import practicaParcial.collectors.condiciones.Condicion;
 
 import java.util.ArrayList;
