@@ -5,20 +5,54 @@ import java.util.ArrayList;
 import practicaParcial.parcial2210.condiciones.Condicion;
 
 public class Grupo extends ComponenteVenta {
-    private ArrayList<ComponenteVenta> elementos;
+    protected ArrayList<ComponenteVenta> elementos;
 
     public Grupo() {
         this.elementos = new ArrayList<>();
     }
 
+    public void addElemento(ComponenteVenta elemento) {
+        this.elementos.add(elemento);
+    }
+
+    public int cantidadVentasTotales() {//BIEN
+        int resultado = 0;
+        for (ComponenteVenta elemento : elementos) {
+            resultado += elemento.cantidadVentasTotales();
+        }
+        return resultado;
+    }
+
+
+    public int cantidadProductosVendidos() {//BIEN
+        int resultado = 0;
+        for (ComponenteVenta elemento : elementos) {
+            resultado += elemento.cantidadProductosVendidos();
+        }
+        return resultado;
+    }
+
     @Override
-    public double getGanancias() {
+    public double getGanancias() {//BIEN
         double resultado = 0;
         for (ComponenteVenta elemento : elementos) {
             resultado += elemento.getGanancias();
         }
         return resultado;
     }
+
+    @Override
+    public double getPromedioEdad() {
+        if (elementos.isEmpty()) {//BIEN
+            return 0; // O cualquier valor que represente que no hay elementos
+        }
+        double totalEdades = 0;
+        for (ComponenteVenta elemento : elementos) {
+            totalEdades += elemento.getPromedioEdad();
+        }
+        return totalEdades / this.elementos.size();
+    }
+
 
     @Override
     public ArrayList<Vendedor> buscar(Condicion c) {
@@ -29,43 +63,5 @@ public class Grupo extends ComponenteVenta {
         return resultado;
     }
 
-    public int cantidadProductosVendidos() {
-        int resultado = 0;
-        for (ComponenteVenta elemento : elementos) {
-            resultado += elemento.cantidadProductosVendidos();
-        }
-        return resultado;
-    }
 
-    public int cantidadVentasTotales() {
-        int resultado = 0;
-        for (ComponenteVenta elemento : elementos) {
-            resultado += elemento.cantidadVentasTotales();
-        }
-        return resultado;
-    }
-
-    @Override
-    public int getPromedioEdad() {
-        if (elementos.isEmpty()) {
-            return 0; // O cualquier valor que represente que no hay elementos
-        }
-        int totalPersonas = 0;
-        int totalEdades = 0;
-        for (ComponenteVenta elemento : elementos) {
-            totalEdades += elemento.getPromedioEdad();
-            totalPersonas += elemento.getCantidadPersonas(); // Método que devuelve la cantidad de personas en cada ComponenteVenta
-
-        }
-        return totalEdades / totalPersonas;//revisar
-    }
-
-    @Override
-    public int getCantidadPersonas() {
-        int totalPersonas = 0;
-        for (ComponenteVenta elemento : elementos) {
-            totalPersonas += elemento.getCantidadPersonas(); // Método que devuelve la cantidad de personas en cada ComponenteVenta
-        }
-        return totalPersonas;
-    }
 }

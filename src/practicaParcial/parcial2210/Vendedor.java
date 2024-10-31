@@ -22,20 +22,32 @@ public class Vendedor extends ComponenteVenta {
         this.ventas.add(v);
     }
 
-
     @Override
-    public double getGanancias() {
-        double monto = 0;
-        int cantidadVendida = 0;
-        for (Venta venta : ventas) {
-            monto += venta.getMonto();
-            cantidadVendida += venta.getCantidadProductosVendidos();
-        }
-        return monto * cantidadVendida;
+    public int cantidadVentasTotales() {//BIEN
+        return this.ventas.size();
     }
 
     @Override
-    public ArrayList<Vendedor> buscar(Condicion c) {
+    public int cantidadProductosVendidos() {//BIEN
+        int resultado = 0;
+        for (Venta venta : ventas) {
+            resultado += venta.getCantidad();
+        }
+        return resultado;
+    }
+
+
+    @Override
+    public double getGanancias() {// EL CALCULO LO HACE LA VENTA, YO SOLO DEBO SUMAR
+        double resultado = 0;
+        for (Venta venta : ventas) {
+            resultado += venta.getGanancias();
+        }
+        return resultado;
+    }
+
+    @Override
+    public ArrayList<Vendedor> buscar(Condicion c) {//BIEN
         ArrayList<Vendedor> resultado = new ArrayList<>();
         if (c.cumple(this)) {
             resultado.add(this);
@@ -43,49 +55,28 @@ public class Vendedor extends ComponenteVenta {
         return resultado;
     }
 
-    @Override
-    public int cantidadProductosVendidos() {
-        int resultado = 0;
-        for (Venta venta : ventas) {
-            resultado += venta.getCantidadProductosVendidos();
+
+    public ArrayList<Venta> getVentas() {
+        return new ArrayList<Venta>(ventas);
+    }
+
+    public boolean vendisteAlgo(LocalDate fi, LocalDate ff) {//LO HABIA HECHO MAL
+        for (int i = 0; i < ventas.size(); i++) {
+
+            if (ventas.get(i).getFecha().compareTo(ff) <= 0 &&
+                    ventas.get(i).getFecha().compareTo(fi) >= 0)
+                return true;
         }
-        return resultado;
+
+        return false;
     }
 
-    @Override
-    public int cantidadVentasTotales() {
-        return this.ventas.size();
-    }
 
     @Override
-    public int getPromedioEdad() {
+    public double getPromedioEdad() {
         return edad;
     }
 
-    @Override
-    public int getCantidadPersonas() {
-        return 1;
-    }
-
-    public boolean buscarFechaVentaBefore(LocalDate fechaInicio) {
-        for (Venta venta : ventas) {
-            LocalDate fechaVenta = venta.getFecha();
-            if ((fechaVenta.isBefore(fechaInicio) || fechaVenta.isEqual(fechaInicio))) {
-                return true; // Devuelve true si alguna venta está dentro del rango
-            }
-        }
-        return false; // Devuelve false si no se encontró ninguna venta en el rango
-    }
-
-    public boolean buscarFechaVentaAfter(LocalDate fechaFin) {
-        for (Venta venta : ventas) {
-            LocalDate fechaVenta = venta.getFecha();
-            if ((fechaVenta.isAfter(fechaFin) || fechaVenta.isEqual(fechaFin))) {
-                return true; // Devuelve true si alguna venta está dentro del rango
-            }
-        }
-        return false; // Devuelve false si no se encontró ninguna venta en el rango
-    }
 
     public boolean vendioProducto(String codigo) {
         for (Venta venta : ventas) {

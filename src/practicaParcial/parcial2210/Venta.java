@@ -7,14 +7,14 @@ public class Venta {
     private String codigoProducto;
     private int dniComprador;
     private double monto;
-    private int cantVendidos;
+    private int cantidad;
 
-    public Venta(LocalDate fecha, String codigoProducto, int dniComprador, double monto, int cantVendidos) {
+    public Venta(LocalDate fecha, String codigoProducto, int dniComprador, double monto, int cantidad) {
         this.fecha = fecha;
         this.codigoProducto = codigoProducto;
         this.dniComprador = dniComprador;
         this.monto = monto;
-        this.cantVendidos = cantVendidos;
+        this.cantidad = cantidad;
     }
 
     public LocalDate getFecha() {
@@ -49,11 +49,17 @@ public class Venta {
         this.monto = monto;
     }
 
-    public int getCantidadProductosVendidos() {
-        return cantVendidos;
+    public int getCantidad() {
+        return cantidad;
     }
 
-    public void setCantVendidos(int cantVendidos) {
-        this.cantVendidos = cantVendidos;
+    public void setCantidads(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+
+    //la ganacia la calcula la venta
+    public double getGanancias() {
+        return cantidad*monto;
     }
 }

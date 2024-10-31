@@ -1,7 +1,7 @@
 package practicaParcial.parcial2210;
 
 public class VendedorMentiroso extends Vendedor {
-    private double exagerarMonto;
+    private double exagerarMonto;//BIEN
 
     public VendedorMentiroso(String nombre, String apellido, int edad, double exagerarMonto) {
         super(nombre, apellido, edad);

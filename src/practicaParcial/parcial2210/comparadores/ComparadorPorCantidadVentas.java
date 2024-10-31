@@ -4,6 +4,7 @@ import practicaParcial.parcial2210.Vendedor;
 
 import java.util.Comparator;
 
+//BIEN
 public class ComparadorPorCantidadVentas implements Comparator<Vendedor> {
     @Override
     public int compare(Vendedor o1, Vendedor o2) {
