@@ -54,25 +54,27 @@ public class Album extends ElementoFoto {
         return resultado;
     }
 
-    @Override
-    public ElementoFoto copia(Condicion c) {
-        //hago una copia del objeto en donde estoy, no de su abstracto
-        Album copia = new Album(this.getNombre(), this.getFecha());
-        for (ElementoFoto elemento : elementos) {
-            ElementoFoto copiaHijo = elemento.copia(c);//guardo al hijo
+    public ElementoFoto copia(Condicion cond) {
+        Album copia = crearAlbum();  //<--CAMBIAMOS ESTA LINEA
+        boolean agrego = false;
+        for (ElementoFoto elem : elementos) {
+            ElementoFoto copiaHijo = elem.copia(cond);
             if (copiaHijo != null) {
-                copia.addElemento(copiaHijo); //sea simple o compuesto lo agrego
+                copia.addElemento(copiaHijo);
+                agrego = true;
             }
         }
-        if (copia.tieneElementos()) {
+
+        if (agrego)
             return copia;
-        }
-        return null;
+        else
+            return null;
     }
 
-    public boolean tieneElementos() {
-        return !elementos.isEmpty();
+    private Album crearAlbum() { // <-- AGREGAMOS ESTE METODO
+        return new Album(this.getNombre(), this.getFecha());
     }
+
 
 
 }

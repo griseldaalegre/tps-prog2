@@ -2,30 +2,30 @@ package practicaParcial.parciales2021.hotelera;
 
 import practicaParcial.parciales2021.hotelera.condiciones.Condicion;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Comparator;
 
-public class Habitacion extends ComponenteHotel {
-    private double metros;
+//Simple
+public class Habitacion extends ElementoHotel {
+    private double m2;
     private int cantidadCamas;
+    private LocalDate ultimaFechaDeOcupacion;
     private boolean aceptaMascotas;
-    private boolean libre;
+    private Turista turista;
     private ArrayList<String> comodidades;
 
-    public Habitacion(double metros, int cantidadCamas, boolean aceptaMascotas, boolean libre) {
-        this.metros = metros;
+    public Habitacion(double m2, int cantidadCamas, LocalDate ultimaFechaDeOcupacion, boolean aceptaMascotas) {
+        this.m2 = m2;
         this.cantidadCamas = cantidadCamas;
+        this.ultimaFechaDeOcupacion = ultimaFechaDeOcupacion;
         this.aceptaMascotas = aceptaMascotas;
-        this.libre = libre;
-        this.comodidades = new ArrayList<String>();
+        this.turista = null;
+        this.comodidades = new ArrayList<>();
     }
+    //implementa comparable?
 
-    public double getMetros() {
-        return metros;
-    }
-
-    public void setMetros(double metros) {
-        this.metros = metros;
+    public void setM2(double m2) {
+        this.m2 = m2;
     }
 
     public int getCantidadCamas() {
@@ -36,6 +36,22 @@ public class Habitacion extends ComponenteHotel {
         this.cantidadCamas = cantidadCamas;
     }
 
+    public LocalDate getUltimaFechaDeOcupacion() {
+        return ultimaFechaDeOcupacion;
+    }
+
+    public void setUltimaFechaDeOcupacion(LocalDate ultimaFechaDeOcupacion) {
+        this.ultimaFechaDeOcupacion = ultimaFechaDeOcupacion;
+    }
+
+    public Turista getTurista() {
+        return turista;
+    }
+
+    public void setTurista(Turista turista) {
+        this.turista = turista;
+    }
+
     public boolean isAceptaMascotas() {
         return aceptaMascotas;
     }
@@ -44,39 +60,55 @@ public class Habitacion extends ComponenteHotel {
         this.aceptaMascotas = aceptaMascotas;
     }
 
-    public boolean isLibre() {
-        return libre;
-    }
-
-    public void setLibre(boolean libre) {
-        this.libre = libre;
-    }
-
-    public void addComodidad(String comodidad) {
-        if (!this.comodidades.contains(comodidad)) {
-            this.comodidades.add(comodidad);
-        }
-    }
-
+    //para la condicion de busqueda
     public boolean tieneComodidad(String comodidad) {
         return this.comodidades.contains(comodidad);
     }
 
+    public void setComodidades(String comodidad) {
+        this.comodidades.add(comodidad);
+    }
+
     @Override
-    public int getCantidadHabitacionesQueTienen(Condicion c) {
+    public ArrayList<Habitacion> buscarHabitacionesDisponibles(Condicion c) {
+        ArrayList<Habitacion> resultado = new ArrayList<Habitacion>();
+        if (estaLibre()) {
+            if (c.cumple(this)) {//si yo cumplo
+                resultado.add(this);//me agrego
+            }
+            return resultado;
+        }
+        return resultado;
+
+    }
+
+    public boolean estaLibre() {
+        if (this.getTurista() != null) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int getCantidadDeHabitacionesPorCondicion(Condicion c) {
+        int resultado = 0;
         if (c.cumple(this)) {
+            resultado = 1;
+            return resultado;
+        }
+        return resultado;
+    }
+
+    @Override
+    public int getCantidadTotalHabitacionesLibres() {
+        if (this.estaLibre()) {
             return 1;
         }
         return 0;
     }
 
     @Override
-    public ArrayList<Habitacion> buscar(Condicion c) {
-        ArrayList<Habitacion> resultado = new ArrayList<>();
-        if (c.cumple(this)) {
-            resultado.add(this);
-        }
-        return resultado;
+    public double getTotalDimension() {
+        return m2;
     }
-
 }

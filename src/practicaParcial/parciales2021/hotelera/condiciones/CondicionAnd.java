@@ -11,9 +11,8 @@ public class CondicionAnd extends Condicion {
         this.c2 = c2;
     }
 
-
     @Override
     public boolean cumple(Habitacion h) {
-        return c1.cumple(h) && c2.cumple(h);
+        return c1.cumple(h) && c1.cumple(h);
     }
 }

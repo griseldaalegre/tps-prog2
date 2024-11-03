@@ -2,12 +2,13 @@ package practicaParcial.parciales2021.hotelera;
 
 public class Turista {
     private String nombre;
-    private String ciudadOrigen;
     private int edad;
+    private String ciudad;
 
-    public Turista(String ciudadOrigen, int edad) {
-        this.ciudadOrigen = ciudadOrigen;
+    public Turista(String nombre, int edad, String ciudad) {
+        this.nombre = nombre;
         this.edad = edad;
+        this.ciudad = ciudad;
     }
 
     public String getNombre() {
@@ -18,19 +19,19 @@ public class Turista {
         this.nombre = nombre;
     }
 
-    public String getCiudadOrigen() {
-        return ciudadOrigen;
-    }
-
-    public void setCiudadOrigen(String ciudadOrigen) {
-        this.ciudadOrigen = ciudadOrigen;
-    }
-
     public int getEdad() {
         return edad;
     }
 
     public void setEdad(int edad) {
         this.edad = edad;
+    }
+
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
     }
 }

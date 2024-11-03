@@ -17,4 +17,11 @@ public class AlbumRestringido extends Album {
             this.elementos.add(f);
         }
     }
+
+    private Album crearAlbum() { // <--AGREGAMOS ESTE METODO QUE CREA LA COPIA "VACIA" DEL ALBUM RESTRINGIDO
+        //  LUEGO EL METODO HEREDADO DEL PADRE COMPLETA EL RESTO DE LA INFORMACION DE LA COPIA
+        return new AlbumRestringido(this.getNombre(), this.getFecha(), this.limiteFotos);
+    }
+
+
 }
